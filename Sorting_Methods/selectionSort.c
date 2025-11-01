@@ -28,6 +28,11 @@ void printArray(int arr[], int size){
 int main(){
     int arr[] = {10, 9,8,7,6,5,4,3,11,2, 10};
     int size = sizeof(arr)/sizeof(arr[0]);
+    printf("Array Before Sorting :- ");
+    printArray(arr, size);
+
     selectionSort(arr, size);
+
+    printf("\nArray After Sorting :- ");
     printArray(arr, size);
 }
