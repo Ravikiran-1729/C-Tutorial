@@ -35,15 +35,15 @@ void insertAtBeginning(struct node** head, int data){
 
 
 
-void searchByValue(struct node** head, int val){
-    if(*head == NULL){
+void searchByValue(struct node* head, int val){
+    if(head == NULL){
         printf("Error: List is Empty.\n");
         return;
     }
 
-    struct node* tempNode = *head;
+    struct node* tempNode = head;
 
-    if((*head)->data == val){
+    if((head)->data == val){
         printf("\nNode with value %d is found at index 0\n", tempNode->data);
         return;
     }
@@ -58,6 +58,32 @@ void searchByValue(struct node** head, int val){
         }
     }
     printf("\nError: Node with value %d is not found.\n", val);
+}
+
+
+
+void searchByIdx(struct node* head, int idx){
+    if(head == NULL){
+        printf("Error: List is Empty.\n");
+        return;
+    }
+
+    if(idx == 0){
+        printf("\nNode with value %d is found at index 0\n", head->data);
+        return;
+    }
+    
+    struct node* tempNode = head;
+    int i = 0;
+    while(tempNode != NULL && i<idx){
+        tempNode = tempNode->next;
+        i++;
+    }
+    if(tempNode == NULL){
+        printf("\nError: Index is %d out of bound\n", idx);
+        return;
+    }
+    printf("\nNode with value %d is found at index %d\n", tempNode->data, idx);
 }
 
 int main(){
@@ -75,7 +101,9 @@ int main(){
     printf("\nFinal linked list after all insertions:\n");
     printList(head);
 
-    searchByValue(&head,3);
+    searchByValue(head,3);
+    printList(head);
+    searchByIdx(head,4);
     printList(head);
 
     return 0;
