@@ -58,8 +58,23 @@ void printList(struct node* head){
     printf("NULL\n");
 }
 
-int main(){
 
+struct node* reversewhile(struct node* head){
+    struct node* prev = NULL;
+    struct node* curr = head;
+    while (curr != NULL)    
+    {
+        /* code */
+        struct node* next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    return prev;
+}
+
+int main(){
     struct node* head = NULL;
     head = createNode(4);
     insertAtBeginning(&head, 3);
@@ -67,8 +82,10 @@ int main(){
     insertAtBeginning(&head, 1);
     insertAtBeginning(&head, 0);
     printList(head);
-    reverseList(&head);
+    head = reversewhile(head);
     printList(head);
+    reverseList(&head);
+    printList(head); 
     head = reverseListRecursion(head);
     printList(head);
 }

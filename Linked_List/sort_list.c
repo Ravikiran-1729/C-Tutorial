@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<time.h>
 #include<stdlib.h>
 
 struct node{
@@ -101,8 +102,12 @@ int main(){
     printf("\nFinal linked list after all insertions:\n");
     printList(head);
     
-    
+
+    clock_t start = clock();
     sort(head);
+    clock_t end = clock();
+    
+    printf("\n %llf", end-start);
     printf("\nFinal linked list after Sorting:\n");
     printList(head);
     return 0;
